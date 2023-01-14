@@ -1,6 +1,7 @@
 <template>
     <div class="vForm3">
         <v-form-designer ref="vfdRef"></v-form-designer>
+        <div>vform3</div>
     </div>
 </template>
     
