@@ -783,25 +783,6 @@
                     </el-collapse>
                 </el-card>
             </el-col>
-            <el-col :xs="24" :sm="24" :md="12" :lg="8">
-                <el-card class="update-log">
-                    <template #header>
-                        <div class="clearfix">
-                            <span>捐赠支持</span>
-                        </div>
-                    </template>
-                    <div class="body">
-                        <img
-                            src="https://oscimg.oschina.net/oscnet/up-d6695f82666e5018f715c41cb7ee60d3b73.png"
-                            alt="donate"
-                            style="width: 100%"
-                        />
-                        <span style="display: inline-block; height: 30px; line-height: 30px"
-                            >你可以请作者喝杯咖啡表示鼓励</span
-                        >
-                    </div>
-                </el-card>
-            </el-col>
         </el-row>
     </div>
 </template>
