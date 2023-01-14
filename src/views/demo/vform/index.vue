@@ -2,6 +2,7 @@
     <div class="vForm3">
         <v-form-designer ref="vfdRef"></v-form-designer>
         <div>vform3</div>
+        <div>vform</div>
     </div>
 </template>
     
@@ -20,9 +21,6 @@ body {
     margin: 0;
     margin-left:-200px;
     display: flex;
-    :deep(.toolbar-header){
-        
-    }
     :deep(.main-header) {
         display: none;
     }
