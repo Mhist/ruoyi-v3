@@ -21,9 +21,6 @@ body {
     margin: 0;
     margin-left:-200px;
     display: flex;
-    :deep(.toolbar-header){
-        
-    }
     :deep(.main-header) {
         display: none;
     }
