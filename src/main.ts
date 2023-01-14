@@ -55,6 +55,10 @@ import TreeSelect from '@/components/TreeSelect/index.vue';
 // 字典标签组件
 import DictTag from '@/components/DictTag/index.vue';
 
+
+// 引入VForm3
+import VForm3 from 'vform3-builds';  //引入VForm 3库
+import 'vform3-builds/dist/designer.style.css';  //引入VForm3样式
 const app = createApp(App);
 
 // 全局方法挂载
@@ -80,7 +84,7 @@ app.use(router);
 app.use(store);
 app.use(plugins);
 app.use(elementIcons);
-app.component('svg-icon', SvgIcon);
+app.component('SvgIcon', SvgIcon);
 
 directive(app);
 
@@ -90,5 +94,7 @@ app.use(ElementPlus, {
     // 支持 large、default、small
     size: Cookies.get('size') || 'default',
 });
+
+app.use(VForm3);  //全局注册VForm 3(同时注册了v-form-designer和v-form-render组件)
 
 app.mount('#app');
