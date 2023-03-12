@@ -21,12 +21,14 @@
         "jsencrypt": "3.3.1",
         "nprogress": "0.2.0",
         "pinia": "2.0.22",
+        "sortablejs": "^1.15.0",
         "vform3-builds": "^3.0.8",
         "vue": "3.2.45",
         "vue-cropper": "1.0.3",
         "vue-router": "4.1.4"
     },
     "devDependencies": {
+        "@types/codemirror": "^5.60.5",
         "@types/file-saver": "^2.0.5",
         "@types/js-cookie": "^3.0.2",
         "@types/node": "^18.7.15",
