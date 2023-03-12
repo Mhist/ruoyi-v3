@@ -1,5 +1,6 @@
 module.exports = {
     root: true,
+    parser: "@babel/eslint-parser",
     globals: {
         defineProps: 'readonly',
         defineEmits: 'readonly',
@@ -46,6 +47,7 @@ module.exports = {
         'no-eval': 2,
         semi: 1,
         indent: [
+            1,
             2,
             4,
             {
