@@ -1,23 +1,40 @@
-<template lang="">
-    <div>
-        <div class="red">1</div>
-        <code-editor
-        ref="codeEditorRef"
-        :code="sql"
+<template>
+    <Codemirror
+      v-model:value="code"
+      :options="cmOptions"
+      :border="true"
+      @change="onChange"
+      @input="onInput"
+      @ready="onReady"
+      KeepCursorInEnd="true"
+    >
+    </Codemirror>
+  </template>
+  <script lang="ts" setup>
+  import { ref } from "vue";
+  import "codemirror/mode/javascript/javascript.js";
+  import 'codemirror/mode/htmlmixed/htmlmixed.js';
+  import Codemirror from "codemirror-editor-vue3";
+  import type { Editor, EditorConfiguration } from "codemirror";
   
->
-</code-editor>
-    </div>
-</template>
-<script lang="ts" setup>
-import {ref} from 'vue';
-let a = ref(false);
-console.log(a,"a");
-</script>
-<style lang="scss" scoped>
-    .red{
-        color: red;
-    }
-</style>
+  const code = ref('console.log("name")');
+  
+  const cmOptions: EditorConfiguration = {
+    mode: "text/html",
+  };
+  
+  const onChange = (val: string, cm: Editor) => {
+    console.log(val);
+    console.log(cm.getValue());
+  };
+  
+  const onInput = (val: string) => {
+    console.log(val);
+  };
+  
+  const onReady = (cm: Editor) => {
+    console.log(cm.focus());
+  };
+  </script>
   
   

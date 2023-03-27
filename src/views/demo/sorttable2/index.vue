@@ -72,12 +72,16 @@
             :total="total2"
             @pagination="getList"
         />
+
+        <el-input v-model="content"></el-input>
+        <el-button @click="sendRequest">send</el-button>
+        <el-input type="textarea" v-model ="response"></el-input>
     </div>
 </template>
 
 <script setup name="User" lang="ts">
 import { listUser } from '@/api/system/user';
-import icon_dot_sort from "assets/images/icon_dot_sort.png";
+
 
 import {
     getCurrentInstance,
@@ -92,6 +96,7 @@ import {
 import { useRouter } from 'vue-router';
 import { ElTree } from 'element-plus';
 import Sortable from 'sortablejs';
+
 const router = useRouter();
 const { proxy } = getCurrentInstance() as ComponentInternalInstance;
 const loading = ref(true);
@@ -104,6 +109,9 @@ const userList2 = ref<Person[]>([]);
 const dateRange = ref<any[]>([]);
 const ids = ref<any[]>([]);
 const ids2 = ref<any[]>([]);
+
+const content = ref('');
+const response = ref('');
 const data = reactive<{
     form: any;
     queryParams: any;
@@ -166,6 +174,19 @@ interface Person {
     nickName: string;
     phonenumber: number;
     userId:number;
+}
+async function example(content:any) {
+    const api = new ChatGPTAPI({
+    apiKey: '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'
+  })
+
+  const res = await api.sendMessage(content)
+  response.value = res;
+}
+
+function sendRequest(){
+    console.log("haahh");
+    example(content)
 }
 
 const rowDropInit = () => {

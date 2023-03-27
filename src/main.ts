@@ -23,6 +23,10 @@ import directive from './directive'; // directive
 import plugins from './plugins'; // plugins
 import { download } from '@/utils/request';
 
+// code
+import { InstallCodemirro } from "codemirror-editor-vue3"
+
+
 // svg图标
 import 'virtual:svg-icons-register';
 import SvgIcon from '@/components/SvgIcon/index.vue';
@@ -54,7 +58,6 @@ import ImagePreview from '@/components/ImagePreview/index.vue';
 import TreeSelect from '@/components/TreeSelect/index.vue';
 // 字典标签组件
 import DictTag from '@/components/DictTag/index.vue';
-
 
 const app = createApp(App);
 
@@ -91,4 +94,7 @@ app.use(ElementPlus, {
     // 支持 large、default、small
     size: Cookies.get('size') || 'default',
 });
+
+
+app.use(InstallCodemirro);
 app.mount('#app');
