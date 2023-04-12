@@ -26,6 +26,10 @@ import { download } from '@/utils/request';
 // code
 import { InstallCodemirro } from "codemirror-editor-vue3"
 
+// schema json 
+import JsonSchemaEditor from 'json-schema-editor-vue3';
+import 'json-schema-editor-vue3/lib/json-schema-editor-vue3.css';
+
 
 // svg图标
 import 'virtual:svg-icons-register';
@@ -97,4 +101,5 @@ app.use(ElementPlus, {
 
 
 app.use(InstallCodemirro);
+app.use(JsonSchemaEditor);
 app.mount('#app');

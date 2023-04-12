@@ -8,7 +8,7 @@
       @ready="onReady"
       KeepCursorInEnd="true"
     >
-    </Codemirror>
+    </Codemirror> 
   </template>
   <script lang="ts" setup>
   import { ref } from "vue";
