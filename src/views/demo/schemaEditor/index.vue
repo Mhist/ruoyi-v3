@@ -24,18 +24,20 @@
     <el-dialog
   title="导入json"
   v-model="visible"
-  width="50%"
+  width="100%"
   draggable
 >
-<div class="containe2">
-  <Codemirror
+<div class="">
+  <!-- <Codemirror
       
       v-model:value="importJson"
       :options="cmOptions"
       :border="true"
       KeepCursorInEnd="true"
     >
-    </Codemirror> 
+    </Codemirror> -->
+    <vue-json-pretty :data="JSON.parse(importJson)" :showLength="true" :showSelectController="true" :showLineNumber="false" :deep="3" :editable="false" :showDoubleQuotes="true" :showIcon="true"/> 
+    <json-viewer :value="JSON.parse(importJson)" copyable boxed sort />
     </div>
   <template #footer>
     <span class="dialog-footer">
@@ -49,16 +51,28 @@
 </template>
 
 <script lang="ts" setup>
-  import {ref,computed} from 'vue';
+  import {ref,computed,reactive} from 'vue';
   import GenerateSchema from 'generate-schema';
   import "codemirror/mode/javascript/javascript.js";
   import 'codemirror/mode/htmlmixed/htmlmixed.js';
   import Codemirror from "codemirror-editor-vue3";
   import type { Editor, EditorConfiguration } from "codemirror";
+  import VueJsonPretty from 'vue-json-pretty';
+import 'vue-json-pretty/lib/styles.css';
+import "vue3-json-viewer/dist/index.css";
 import { assertJSXMemberExpression } from '@babel/types';
   const cmOptions: EditorConfiguration = {
     mode: "application/json",
   };
+let obj = {
+  name: "qiu",//字符串
+  age: 18,//数组
+  isMan:false,//布尔值
+  date:new Date(),
+  fn:()=>{},
+  arr:[1,2,5]
+};
+const jsonData = reactive(obj);
   const visible = ref(false);
 
   let jsonStr = computed({
@@ -72,11 +86,13 @@ import { assertJSXMemberExpression } from '@babel/types';
       }
 })
 let   importJson = jsonStr;
+
+
   const tree=ref();
     // 导入json
   tree.value = {
-  "root": {
-    "type": "object",
+root: {
+    type: "object",
     "title": "条件",
     "properties": {
       "name": {
@@ -102,12 +118,19 @@ let   importJson = jsonStr;
     ]
   }
 }
-
+const jsonViewerData = {
+  name:"江亚东",
+  project:"软件生产线平台",
+  inner:{
+    position:"武汉省湖北市",
+    work:"fronted"
+  }
+};
 function handleImportJson () {
       const  t = GenerateSchema.json(JSON.parse(importJson.value))
       delete t.$schema
-      tree.value.root = t
-      visible.value = false
+      tree.value.root = t 
+       visible.value = false
     };
 </script>
 
